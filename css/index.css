@@ -1,0 +1,215 @@
+body {
+  /*background-color: #5a5b5e;*/
+  background: linear-gradient(0deg, rgb(4, 4, 4) 0%, rgba(199,0,228,1) 44%, rgba(0,212,255,1) 100%);
+  margin: 0;
+
+}
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
+}
+.navbar {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  position: fixed;
+  width: 100%;
+  z-index: 9;
+}
+.navbarContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.navbarRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.navbarItem {
+  background: rgba(186, 186, 186, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  color: black;
+  font-size: 20px;
+  margin: 20px;
+  padding: 20px;
+}
+.navbarLogoBox{
+ /* background: rgba(186, 186, 186, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);*/
+  padding: 10px
+}
+.navbarLogo{
+  width: 95px;
+}
+
+.container {
+  /*background-image: url("../images/BackgroundBlue.png");
+  background-repeat: no-repeat, repeat;
+  background-size: cover;*/
+ /* background: rgb(199,0,228);
+background: linear-gradient(0deg, rgba(199,0,228,1) 0%, rgba(9,94,121,1) 44%, rgba(0,212,255,1) 100%);*/
+  /*height: 100vh;*/
+  min-height: 100vh;
+}
+
+.showCase {
+  display: flex;
+  flex-direction: row;
+  padding: 15% 5%;
+  justify-content: space-evenly;
+  /*height: 100%;*/
+}
+
+.cases {
+  display: flex;
+  justify-content: center;
+  /* From https://css.glass */
+  /*background: rgba(97, 138, 208, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(97, 138, 208, 0.3);*/
+}
+
+.numbersDisplay{
+ /* background: rgb(199,0,228);
+background: linear-gradient(180deg, rgba(198 0 227) 0%, rgba(11,11,11,1) 100%);*/
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  
+}
+.numbersBox{
+  padding: 10%;
+  color: white;
+  font-size: 50px;
+}
+.number{
+  color: red;
+}
+.footerContainer{
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 2%;
+}
+.footerBox h3,h4{
+  color: white;
+  text-align: center;
+}
+
+/* GLASS BUTTON*/
+.glassButton {
+  display: inline-block;
+  padding: 24px 32px;
+  border: 0;
+  text-decoration: none;
+  border-radius: 15px;
+  background-color: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(30px);
+  color: rgba(255,255,255,0.8);
+  font-size: 14px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin: 1%;
+}
+
+.glassButton:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
+
+/*SOCIAL MEDIA */
+
+.socialMediaBox{
+  display: flex;
+}
+
+
+.socialMediaUl {
+  margin:0;
+  padding:0;
+  display:flex;
+}
+
+.socialMediaUl .socialMediaLi {
+  list-style: none;
+}
+
+.socialMediaUl .socialMediaLi a {
+  position: relative;
+  width:60px;
+  height:60px;
+  display:block;
+  text-align:center;
+  margin:0 10px;
+  border-radius: 50%;
+  padding: 6px;
+  box-sizing: border-box;
+  text-decoration:none;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+  background-color: rgb(255 255 255 / 51%);
+  transition: .5s;
+}
+
+.socialMediaUl .socialMediaLi a:hover {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  text-decoration:none;
+}
+
+.socialMediaUl .socialMediaLi a .fab {
+  width: 100%;
+  height:100%;
+  display:block;
+  background-color: rgb(255 255 255 / 51%);
+  border-radius: 50%;
+  line-height: calc(60px - 12px);
+  font-size:24px;
+  color: #262626;
+  transition: .5s;
+}
+
+.socialMediaUl .socialMediaLi:nth-child(1) a:hover .fab {
+  color: #3b5998;
+}
+
+.socialMediaUl .socialMediaLi:nth-child(2) a:hover .fab {
+  color: #00aced;
+}
+
+.socialMediaUl .socialMediaLi:nth-child(3) a:hover .fab {
+  color: #dd4b39;
+}
+
+.socialMediaUl .socialMediaLi:nth-child(4) a:hover .fab {
+  color: #007bb6;
+}
+
+.socialMediaUl .socialMediaLi:nth-child(5) a:hover .fab {
+  color: #e4405f;
+}
+
+/*CONTACTS LINKS*/
+
+.contacts{
+  color: white;
+  font-size: 20px;
+  margin-top: 1%;
+}

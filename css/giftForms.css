@@ -1,0 +1,178 @@
+.title {
+  color: white;
+  text-align: center;
+}
+.giftForm {
+  display: flex;
+  flex-direction: column;
+  padding: 15% 5%;
+}
+.fields {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.FormFields {
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+  justify-content: center;
+}
+.formRow {
+  display: flex;
+  flex-direction: row;
+}
+.formSubmit {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.inputGlass {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  width: 100%;
+  font-size: 25px;
+  margin: 1%;
+}
+.inputGlass:focus {
+  outline: none;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 1%;
+}
+.smallField {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.imagePreview {
+  background-color: rgba(255, 255, 255, 0.2);
+  height: 200px;
+  width: 200px;
+  align-self: center;
+  margin: 5%;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+}
+/*
+.inputImage{
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 5%;
+    border: 1   px solid rgba(255, 255, 255, 0.3);
+}*/
+input[type="file"] {
+  display: none;
+}
+.inputImage {
+  padding: 20px 10px;
+  width: 200px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgb(255 255 255 / 30%);
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+  margin-top: 10px;
+  cursor: pointer;
+}
+/*RANKING FROM WEB*/
+
+.rating {
+  display: inline-block;
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+  font-size: 50px;
+}
+
+.rating label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  cursor: pointer;
+}
+
+.rating label:last-child {
+  position: static;
+}
+
+.rating label:nth-child(1) {
+  z-index: 5;
+}
+
+.rating label:nth-child(2) {
+  z-index: 4;
+}
+
+.rating label:nth-child(3) {
+  z-index: 3;
+}
+
+.rating label:nth-child(4) {
+  z-index: 2;
+}
+
+.rating label:nth-child(5) {
+  z-index: 1;
+}
+
+.rating label input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.rating label .icon {
+  float: left;
+  color: transparent;
+}
+
+.rating label:last-child .icon {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.rating:not(:hover) label input:checked ~ .icon,
+.rating:hover label:hover input ~ .icon {
+  color: white;
+}
+
+.rating label input:focus:not(:checked) ~ .icon:last-child {
+  color: rgba(255, 255, 255, 0.2);
+  text-shadow: 0 0 5px #09f;
+}
+
+/*REMOCE ARROWS FROM INPUT TYPE NUMBER*/
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
