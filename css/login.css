@@ -1,138 +1,132 @@
-.loginContainer {
-  background-image: url("../images/BackgroundGradientBlue.png");
-  background-repeat: no-repeat, repeat;
-  background-size: cover;
-  height: 100vh;
+@import url('https://rsms.me/inter/inter-ui.css');
+::selection {
+  background: #2D2F36;
+}
+::-webkit-selection {
+  background: #2D2F36;
+}
+::-moz-selection {
+  background: #2D2F36;
+}
+body {
+  background: white;
+  font-family: 'Inter UI', sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+.page {
+  background: #e2e2e5;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  padding: 5% 5%;
-  align-items: center;
-}
-.formBox {
-  display: flex;
-  align-items: center;
-  height: 50%;
-  padding: 5%;
-}
-.loginForm{
-    display: flex;
-    flex-direction: column; 
-}
-
-/*FORM CSS FROM WEB*/
-
-.flip-container {
-	perspective: 1000;
-}
-.flipper {
-  padding: 30px;
-  width: 300px;
-  height:250px;
-  position: relative;
-
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-
-	
-	transition: 0.6s;
-	transform-style: preserve-3d;
-    
-      background: rgb(148 165 195 / 20%);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-
-  -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(97, 138, 208, 0.3);
-}
-
-.front, .back {
-  /*background-color: rgba(0,0,0,.3);*/
+  flex-direction: column;
+  height: calc(100% - 40px);
   position: absolute;
-    padding:10px 30px;
-  top: 0;
-  left: 0;
-  right: 0;
-	
-	backface-visibility: hidden;
+  place-content: center;
+  width: calc(100% - 40px);
 }
-
-.front{
-	z-index: 2;
-	/* for firefox 31 */
-	transform: rotateY(0deg);
-}
-
-.back{
-    transform: rotateY(180deg);
-}
-.flip{
-		transform: rotateY(180deg);
-}
-input{
-    width:100%;
-    margin-bottom:15px;
-    height:40px;
-    box-sizing: border-box;
-    padding:10px;
-}
-
-.title{
-  text-align: center;
-}
-.flipbutton{
-    color:#000000;
-    text-decoration:none;
-    text-align:left !important;
-}
-
-/*LOGIN BUTTON*/
-
-.loginButton {
-    align-items: center;
-    background-image: linear-gradient(144deg,#055efd,#31bae9);
-    border: 0;
-    border-radius: 8px;
-    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-    box-sizing: border-box;
-    color: #FFFFFF;
-    display: flex;
-    font-family: Phantomsans, sans-serif;
-    font-size: 20px;
-    justify-content: center;
-    line-height: 1em;
-    max-width: 100%;
-    min-width: 140px;
-    padding: 3px;
-    text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    white-space: nowrap;
-    cursor: pointer;
+@media (max-width: 767px) {
+  .page {
+    height: auto;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
   }
-  
-  .loginButton:active,
-  .loginButton:hover {
-    outline: 0;
+}
+.container {
+  display: flex;
+  height: 320px;
+  margin: 0 auto;
+  width: 640px;
+}
+@media (max-width: 767px) {
+  .container {
+    flex-direction: column;
+    height: 630px;
+    width: 320px;
   }
-  
-  .loginButton span {
-    background-color: rgb(5, 6, 45);
-    padding: 16px 24px;
-    border-radius: 6px;
-    width: 100%;
+}
+.left {
+  background: white;
+  height: calc(100% - 40px);
+  top: 20px;
+  position: relative;
+  width: 50%;
+}
+@media (max-width: 767px) {
+  .left {
     height: 100%;
-    transition: 300ms;
+    left: 20px;
+    width: calc(100% - 40px);
+    max-height: 270px;
   }
-  
-  .loginButton:hover span {
-    background: none;
+}
+.login {
+  font-size: 50px;
+  font-weight: 900;
+  margin: 50px 40px 40px;
+}
+.eula {
+  color: #999;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 40px;
+}
+.right {
+  background: #474A59;
+  box-shadow: 0px 0px 40px 16px rgba(0,0,0,0.22);
+  color: #F1F1F2;
+  position: relative;
+  width: 50%;
+}
+@media (max-width: 767px) {
+  .right {
+    flex-shrink: 0;
+    height: 100%;
+    width: 100%;
+    max-height: 350px;
   }
-  
-  @media (min-width: 768px) {
-    .loginButton {
-      font-size: 24px;
-      min-width: 196px;
-    }
-  }
+}
+svg {
+  position: absolute;
+  width: 320px;
+}
+path {
+  fill: none;
+  stroke: url(#linearGradient);;
+  stroke-width: 4;
+  stroke-dasharray: 240 1386;
+}
+.form {
+  margin: 40px;
+  position: absolute;
+}
+label {
+  color:  #c2c2c5;
+  display: block;
+  font-size: 14px;
+  height: 16px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+input {
+  background: transparent;
+  border: 0;
+  color: #f2f2f2;
+  font-size: 20px;
+  height: 30px;
+  line-height: 30px;
+  outline: none !important;
+  width: 100%;
+}
+input::-moz-focus-inner { 
+  border: 0; 
+}
+#submit {
+  color: #707075;
+  margin-top: 40px;
+  transition: color 300ms;
+}
+#submit:focus {
+  color: #f2f2f2;
+}
+#submit:active {
+  color: #d0d0d2;
+}
