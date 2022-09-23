@@ -11,7 +11,9 @@
   <script src="https://kit.fontawesome.com/98f691c863.js" crossorigin="anonymous"></script>
   <title>Gift List</title>
 </head>
-
+<?php
+include("./php/connectBD.php")
+?>
 <body>
   <?php
   include("./blocks/navBar.html")
