@@ -15,7 +15,7 @@
   </head>
   <body>
   <?php
-  include("./blocks/navBar.html")
+  include("./blocks/navBar.php")
   ?>
     <div class="container">
       <div class="showCase">

@@ -1,3 +1,14 @@
+<?php
+
+// see if a session variable is being use in php?
+if (isset($_SESSION['errors']))
+{
+    //Do stuff
+}
+
+
+?>
+
 <nav class="navbar">
   <div class="navbarContainer">
     <div class="navbarRow">

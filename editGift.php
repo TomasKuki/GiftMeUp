@@ -14,7 +14,7 @@
 
 <body>
     <?php
-    include("./blocks/navBar.html")
+    include("./blocks/navBar.htphpml")
     ?>
     <div class="container">
         <div class="giftForm">
