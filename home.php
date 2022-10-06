@@ -39,7 +39,7 @@
     <footer>
     <div class="footerContainer">
       <?php
-      include("./blocks/footer.html")
+      include("./blocks/footer.php")
       ?>
     </div>
 

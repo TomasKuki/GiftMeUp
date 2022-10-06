@@ -53,7 +53,7 @@
       </div>
     </div>
   </div>
-
+  <script src="./js/loginRegister.js"></script>
 </body>
-<script src="./js/loginRegister.js"></script>
+
 </html>
