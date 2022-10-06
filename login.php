@@ -20,11 +20,11 @@
           <div class="formCamps">
             <div class="field">
               <label for="email"></label>
-              <input type="text" name="email" id="">
+              <input class="LoginInput" type="text" name="email" id="">
             </div>
             <div class="field">
               <label for="password"></label>
-              <input type="text" name="password" id="">
+              <input class="LoginInput" type="password" name="password" id="">
             </div>
           </div>
         </form>
@@ -34,22 +34,23 @@
           <div class="formCamps">
             <div class="field">
               <label for="email"></label>
-              <input type="text" name="email" id="">
+              <input class="LoginInput" type="text" name="email" id="">
             </div>
             <div class="field">
               <label for="username"></label>
-              <input type="text" name="username" id="">
+              <input class="LoginInput" type="text" name="username" id="">
             </div>
             <div class="field">
               <label for="password"></label>
-              <input type="text" name="password" id="">
+              <input class="LoginInput" type="password" name="password" id="">
             </div>
           </div>
         </form>
       </div>
       <div class="options">
         <h1>forget Button Here</h1>
-        <button id="flipFormBtn" onclick="flipForms()">Register</button>
+        <button class="submitBtn" id="submitBtn">Login</button>
+        <button class="flipBtn" id="flipFormBtn" onclick="flipForms()">Register</button>
       </div>
     </div>
   </div>
