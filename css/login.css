@@ -33,6 +33,20 @@ body {
   height: 100px;
 }
 
+.forgetBtn{
+  width: 50%;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: 2px solid rgb(106 0 255 / 65%);
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  font-size: 10px;
+}
 .submitBtn{
   width: 100%;
   color: white;
@@ -87,4 +101,9 @@ body {
 
 .LoginInput:hover {
   background-color: rgb(197 170 227);
+}
+
+.labelsform{
+  font-size: 25px;
+  color: white;
 }

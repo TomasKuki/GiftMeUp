@@ -16,41 +16,42 @@
         <img src="./images/logo.png" alt="" srcset="">
       </div>
       <div id="loginForm" class="form">
-        <form action="./php/LoginRegister.php">
+        <form action="./php/LoginRegister.php" method="POST">
           <div class="formCamps">
             <div class="field">
-              <label for="email"></label>
-              <input class="LoginInput" type="text" name="email" id="">
+              <label class="labelsform" for="email">Email:</label>
+              <input class="LoginInput" type="text" name="email" id="" placeholder="Email">
             </div>
             <div class="field">
-              <label for="password"></label>
-              <input class="LoginInput" type="password" name="password" id="">
+              <label class="labelsform" for="password">Password:</label>
+              <input class="LoginInput" type="password" name="password" id="" placeholder="Password">
             </div>
           </div>
+          <button class="submitBtn" id="submitBtn">Login</button>
         </form>
       </div>
       <div id="registerForm" class="form hiddenForm">
-        <form action="./php/LoginRegister.php">
+        <form action="./php/LoginRegister.php" method="POST">
           <div class="formCamps">
             <div class="field">
-              <label for="email"></label>
-              <input class="LoginInput" type="text" name="email" id="">
+              <label  class="labelsform" for="email">Email:</label>
+              <input class="LoginInput" type="text" name="emailRegister" id="" placeholder="Email">
             </div>
             <div class="field">
-              <label for="username"></label>
-              <input class="LoginInput" type="text" name="username" id="">
+              <label class="labelsform" for="username">Username:</label>
+              <input class="LoginInput" type="text" name="usernameRegister" id="" placeholder="Username">
             </div>
             <div class="field">
-              <label for="password"></label>
-              <input class="LoginInput" type="password" name="password" id="">
+              <label class="labelsform" for="password">Password:</label>
+              <input class="LoginInput" type="password" name="passwordRegister" id="" placeholder="Password">
             </div>
           </div>
+          <button class="submitBtn" id="submitBtn">register</button>
         </form>
       </div>
       <div class="options">
-        <h1>forget Button Here</h1>
-        <button class="submitBtn" id="submitBtn">Login</button>
-        <button class="flipBtn" id="flipFormBtn" onclick="flipForms()">Register</button>
+        <button class="forgetBtn" id="submitBtn">Forgot the Password</button>
+        <button class="flipBtn" id="flipFormBtn" onclick="flipForms()">Go to Register Page</button>
       </div>
     </div>
   </div>

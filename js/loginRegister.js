@@ -10,12 +10,12 @@ function flipForms() {
     if (!loginForm.classList.contains('hiddenForm')) {
         loginForm.classList.add('hiddenForm');
         registerForm.classList.remove('hiddenForm');
-        btn.textContent = "Login"
+        btn.textContent = " Go to Login Page"
         submitbtn.classList.add('hiddenForm');
     } else {
         loginForm.classList.remove('hiddenForm');
         registerForm.classList.add('hiddenForm');
-        btn.textContent = "Register"
+        btn.textContent = "Go to Register Page"
         submitbtn.classList.remove('hiddenForm');
     }
 }
