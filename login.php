@@ -9,6 +9,9 @@
   <title>Login Page</title>
 </head>
 
+<?php
+include("./php/connectBD.php")
+?>
 <body>
   <div class="container">
     <div class="formContainer">
