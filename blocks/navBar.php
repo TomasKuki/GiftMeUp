@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // see if a session variable is being use in php?
 if (isset($_SESSION['username'])) {
 ?>
@@ -15,7 +15,7 @@ if (isset($_SESSION['username'])) {
         <a href="">
           <div class="navbarItem">About Us??</div>
         </a>
-        <a href="">
+        <a href="./php/logOut.php">
           <div class="navbarItem">Log Out</div>
         </a>
       </div>
