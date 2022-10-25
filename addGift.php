@@ -4,9 +4,9 @@ include("./php/connectBD.php");
 session_start();
 
 //receive post variables php?
-if(isset($_POST['giftName']) && $_POST['image'] && $_POST['desciption'] && $_POST['stars'] && $_POST['price'] && $_POST['link']){
+if(isset($_POST['giftName']) && $_POST['image'] && $_POST['description'] && $_POST['stars'] && $_POST['price'] && $_POST['link']){
     
-
+    echo "<script type='text/javascript'>alert('YYYYYEEEEEYYYYy');</script>";
     //add gift with user id
     $sql = $mysqli->prepare("INSERT INTO gift (?, ?, ?, ?, ?, ?, ?)");
     $sql->bind_param('sss', $SESSION['userId'], $_POST['giftName'], $_POST['link'], $_POST['image'], $_POST['stars'], $_POST['price'], $_POST['description']);
@@ -52,12 +52,12 @@ if (isset($_SESSION['userId'])) {
             <div class="title">
                 <h2>Create your Gift</h2>
             </div>
-            <form action="">
+            <form action="" method="POST">
                 <div class="fields">
                     <div class="FormFields">
                         <img class="imagePreview" id="output" />
                         <label class="inputImage" for="image">Upload Image</label>
-                        <input name=" " id="image" type="file" accept="image/*" onchange="loadFile(event)">
+                        <input name="image" id="image" type="file" accept="image/*" onchange="loadFile(event)">
 
 
                     </div>
