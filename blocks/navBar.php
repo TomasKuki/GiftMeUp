@@ -1,7 +1,7 @@
 <?php
 session_start();
 // see if a session variable is being use in php?
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['userId'])) {
 ?>
 
   <nav class="navbar">

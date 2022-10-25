@@ -1,34 +1,3 @@
-<?php
-include("./php/connectBD.php");
-
-session_start();
-
-//receive post variables php?
-if(isset($_POST['giftName']) && $_POST['image'] && $_POST['desciption'] && $_POST['stars'] && $_POST['price'] && $_POST['link']){
-    
-
-    //add gift with user id
-    $sql = $mysqli->prepare("INSERT INTO gift (?, ?, ?, ?, ?, ?, ?)");
-    $sql->bind_param('sss', $SESSION['userId'], $_POST['giftName'], $_POST['link'], $_POST['image'], $_POST['stars'], $_POST['price'], $_POST['description']);
-    $sql->execute();
-
-    if ($sql->num_rows == 1) {
-    echo "Gift added successfully";
-    echo "<script type='text/javascript'>window.location.replace('./listGift.php');</script>";
-    } else {
-    echo "Error: " . $sql . "<br>" . $conn->error; //MUDAR DEPOIS
-    echo "<script type='text/javascript'>window.location.replace('./addGift.php');</script>";
-    }
-    //move to home or list gift page
-    echo "<script type='text/javascript'>window.location.replace('./listGift.php');</script>";
-}
-
-
-// see if a session variable is being use in php?
-if (isset($_SESSION['userId'])) {
-    ?>
-    
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +26,7 @@ if (isset($_SESSION['userId'])) {
                     <div class="FormFields">
                         <img class="imagePreview" id="output" />
                         <label class="inputImage" for="image">Upload Image</label>
-                        <input name=" " id="image" type="file" accept="image/*" onchange="loadFile(event)">
+                        <input name="image" id="image" type="file" accept="image/*" onchange="loadFile(event)">
 
 
                     </div>
@@ -151,10 +120,3 @@ if (isset($_SESSION['userId'])) {
         console.log('New star rating: ' + this.value);
     });
 </script>
-
-<?php
-}else {
-    echo "<script type='text/javascript'>window.location.replace('./login.php');</script>";
-}
-?>
-

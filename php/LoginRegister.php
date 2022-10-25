@@ -7,7 +7,7 @@ if(isset($_POST['email']) && $_POST['password']){
      //login
      echo "<script type='text/javascript'>alert('you got login');</script>";
      //verificar o login '
-    $sql = "SELECT Username, Email FROM users Where Email='".$_POST['email']."' and Password='".$_POST['password']."'";
+    $sql = "SELECT Id, Username, Email FROM users Where Email='".$_POST['email']."' and Password='".$_POST['password']."'";
     $result = $conn->query($sql);
 
     
@@ -27,7 +27,7 @@ if(isset($_POST['email']) && $_POST['password']){
         //$_SESSION["username"] = x;
         if ($_POST["email"] ==  $row["Email"]) {
             session_start();
-            $_SESSION["username"] = $row["Username"];
+            $_SESSION["userId"] = $row["Id"];
             //mandar para o perfil do utilizador
             echo "<script type='text/javascript'>window.location.replace('../home.php');</script>";
         }else {
@@ -54,7 +54,7 @@ if(isset($_POST['email']) && $_POST['password']){
     echo "User created successfully";
         //obter o username do utilizador
         //iniciar sessao
-        $_SESSION["username"] = $_POST['usernameRegister'];
+        $_SESSION["userId"] = $_POST['Id'];
     } else {
     echo "Error: " . $sql . "<br>" . $conn->error; //MUDAR DEPOIS
     //PARAR E MUDAR DE PAGINA
