@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet" href="./css/cards.css" />
+    <script src="https://kit.fontawesome.com/98f691c863.js" crossorigin="anonymous"></script>
     <title>Gift List</title>
   </head>
   <body>

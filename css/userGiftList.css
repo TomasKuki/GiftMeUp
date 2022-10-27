@@ -1,0 +1,31 @@
+.showCaseCards{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.showCase{
+    flex-direction: column;
+}
+.showCaseBtn{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+.AddGiftBtn{
+    background: rgba(186, 186, 186, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    color: white;
+    font-size: 20px;
+    margin: 20px;
+    padding: 20px;
+    border: 1px;
+}
+
+.AddGiftBtn:hover{
+    background: rgba(2, 13, 49, 0.432);
+   
+}

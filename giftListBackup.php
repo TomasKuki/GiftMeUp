@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/giftList.css" />
     <link rel="stylesheet" href="./css/cards.css" />
+    <script src="https://kit.fontawesome.com/98f691c863.js" crossorigin="anonymous"></script>
     <title>Personal List</title>
 </head>
 

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet" href="./css/cards.css" />
+    <script src="https://kit.fontawesome.com/98f691c863.js" crossorigin="anonymous"></script>
     <title>Gift List</title>
   </head>
   <body>
@@ -21,17 +22,23 @@
       <div class="showCase">
         <div class="cases">
         <?php
-        include("./blocks/smallCards.html")
+        $text = 'A sua lista';
+        $link = 'userGiftList.php';
+        include("./blocks/smallCards.php")
         ?>
         </div>
         <div class="cases">
         <?php
-        include("./blocks/smallCards.html")
+        $text = 'Veja as listas feitas por outras pessoas';
+        $link = 'usersList.php';
+        include("./blocks/smallCards.php")
         ?>
         </div>
         <div class="cases">
         <?php
-        include("./blocks/smallCards.html")
+        $text = 'Perfil Pessoal';
+        $link = 'perfil.php';
+        include("./blocks/smallCards.php")
         ?>
         </div>
       </div>

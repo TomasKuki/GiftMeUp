@@ -1,32 +1,31 @@
 <?php
-include("./php/connectBD.php");
-
-session_start();
+if(!isset($_SESSION)) { 
+    session_start(); 
+  } 
+// see if a session variable is being use in php?
+if (isset($_SESSION['userId'])) {
+    include("./php/connectBD.php");
 
 //receive post variables php?
 if(isset($_POST['giftName']) && $_POST['image'] && $_POST['description'] && $_POST['stars'] && $_POST['price'] && $_POST['link']){
     
-    echo "<script type='text/javascript'>alert('YYYYYEEEEEYYYYy');</script>";
     //add gift with user id
-    $sql = $mysqli->prepare("INSERT INTO gift (?, ?, ?, ?, ?, ?, ?)");
-    $sql->bind_param('sss', $SESSION['userId'], $_POST['giftName'], $_POST['link'], $_POST['image'], $_POST['stars'], $_POST['price'], $_POST['description']);
-    $sql->execute();
+    //$sql = "INSERT INTO `gift` (`Id`, `UserId`, `Name`, `Link`, `Photo`, `Preference`, `Price`, `Description`, `CategoryId`, `Public`) VALUES (NULL, '2', '1', 'kuki.pt', 'a.pmg', '1', '1', '1', '1', '1');";
+    $sql = "INSERT INTO `gift` (`UserId`, `Name`, `Link`, `Photo`, `Preference`, `Price`, `Description`, `CategoryId`, `Public`) VALUES (".$_SESSION['userId'].", '".$_POST['giftName']."', '".$_POST['link']."', '".$_POST['image']."', '".$_POST['stars']."', '".$_POST['price']."','".$_POST['description']."', '1', '1');";
 
-    if ($sql->num_rows == 1) {
-    echo "Gift added successfully";
-    echo "<script type='text/javascript'>window.location.replace('./listGift.php');</script>";
-    } else {
-    echo "Error: " . $sql . "<br>" . $conn->error; //MUDAR DEPOIS
-    echo "<script type='text/javascript'>window.location.replace('./addGift.php');</script>";
-    }
+    if (mysqli_query($conn, $sql)) {
+        echo "Gift added successfully";
+        echo "<script type='text/javascript'>window.location.replace('./userGiftList.php');</script>";
+      } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo "<script type='text/javascript'>alert('Ops ERRO');</script>";
+        echo "<script type='text/javascript'>window.location.replace('./addGift.php');</script>";
+      }
+
     //move to home or list gift page
-    echo "<script type='text/javascript'>window.location.replace('./listGift.php');</script>";
+   // echo "<script type='text/javascript'>window.location.replace('./listGift.php');</script>";
 }
-
-
-// see if a session variable is being use in php?
-if (isset($_SESSION['userId'])) {
-    ?>
+?>
     
 
 <!DOCTYPE html>
@@ -40,6 +39,7 @@ if (isset($_SESSION['userId'])) {
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/giftForms.css" />
     <link rel="stylesheet" href="./css/cards.css" />
+    <script src="https://kit.fontawesome.com/98f691c863.js" crossorigin="anonymous"></script>
     <title>Personal List</title>
 </head>
 

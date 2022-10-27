@@ -1,7 +1,7 @@
 
 <ul class="cards">
     <li>
-      <a href="" class="card">
+      <a href="<?=$link?>" class="card">
         <img
           src="./images/present.jpg"
           class="card__image"
@@ -10,7 +10,7 @@
         <div class="card__overlay">
           <div class="card__header">
             <div class="card__header-text">
-              <h3 class="card__title">Create your Gift List</h3>
+              <h3 class="card__title"><?=$text?></h3>
             </div>
           </div>
           <p class="card__description">

@@ -5,7 +5,6 @@ include("./connectBD.php");
 //receive post variables php?
 if(isset($_POST['email']) && $_POST['password']){
      //login
-     echo "<script type='text/javascript'>alert('you got login');</script>";
      //verificar o login '
     $sql = "SELECT Id, Username, Email FROM users Where Email='".$_POST['email']."' and Password='".$_POST['password']."'";
     $result = $conn->query($sql);
@@ -14,7 +13,7 @@ if(isset($_POST['email']) && $_POST['password']){
     
     if (mysqli_num_rows($result) == 1) {
     // output login done
-        echo "<script type='text/javascript'>alert('Login done!');</script>";
+       // echo "<script type='text/javascript'>alert('Login done!');</script>";
     } else {
         // output login fale
         echo "<script type='text/javascript'>alert('wrong login data');</script>";

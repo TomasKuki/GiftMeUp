@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/giftForms.css" />
     <link rel="stylesheet" href="./css/cards.css" />
+    <script src="https://kit.fontawesome.com/98f691c863.js" crossorigin="anonymous"></script>
     <title>Personal List</title>
 </head>
 
 <body>
     <?php
-    include("./blocks/navBar.htphpml")
+    include("./blocks/navBar.php")
     ?>
     <div class="container">
         <div class="giftForm">

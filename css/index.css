@@ -70,6 +70,7 @@ background: linear-gradient(0deg, rgba(199,0,228,1) 0%, rgba(9,94,121,1) 44%, rg
   flex-direction: row;
   padding: 15% 5%;
   justify-content: space-evenly;
+  
   /*height: 100%;*/
 }
 

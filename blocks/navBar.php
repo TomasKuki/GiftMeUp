@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(!isset($_SESSION)) { 
+  session_start(); 
+} 
 // see if a session variable is being use in php?
 if (isset($_SESSION['userId'])) {
 ?>
@@ -7,7 +9,7 @@ if (isset($_SESSION['userId'])) {
   <nav class="navbar">
     <div class="navbarContainer">
       <div class="navbarRow">
-        <a href="">
+        <a href="./home.php">
           <div class="navbarLogoBox"><img class="navbarLogo" src="./images/logo.png" alt=""></div>
         </a>
       </div>
@@ -35,7 +37,7 @@ if (isset($_SESSION['userId'])) {
         </a>
       </div>
       <div class="navbarRow">
-        <a href="">
+        <a href="./index.php">
           <div class="navbarItem">About Us??</div>
         </a>
         <a href="./login.php">
