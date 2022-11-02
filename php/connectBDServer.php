@@ -4,7 +4,7 @@
 
 $servername = "localhost";
 $username = "kukipt_GiftMeUpAdmin";
-$password = "kukipt_GiftMeUpAdmin";
+$password = "GiftMeUp1234";
 $bd = "kukipt_GiftMeUp";
 
 // Create connection
