@@ -22,17 +22,17 @@ include("./php/connectBD.php")
     <div class="showCase">
       <div class="cases">
         <?php
-        include("./blocks/card.html")
+        include("./blocks/card.php")
         ?>
       </div>
       <div class="cases">
         <?php
-        include("./blocks/card.html")
+        include("./blocks/card.php")
         ?>
       </div>
       <div class="cases">
         <?php
-        include("./blocks/card.html")
+        include("./blocks/card.php")
         ?>
       </div>
     </div>

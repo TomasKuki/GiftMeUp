@@ -12,7 +12,7 @@
     flex-direction: row;
     justify-content: end;
 }
-.AddGiftBtn{
+.SecondBtn{
     background: rgba(186, 186, 186, 0.2);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
@@ -25,7 +25,8 @@
     border: 1px;
 }
 
-.AddGiftBtn:hover{
+
+.SecondBtn:hover{
     background: rgba(2, 13, 49, 0.432);
    
 }

@@ -35,6 +35,9 @@ if (isset($_SESSION['userId'])) {
   ?>
     <div class="container">
       <div class="showCase">
+      <div class="showCaseBtn">
+          <button class="SecondBtn" onclick="history.back()"> Back</button>
+        </div>
         <div class="showCaseCards">
         
           <?php

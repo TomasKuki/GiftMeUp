@@ -42,7 +42,7 @@ if (isset($_SESSION['userId'])) {
             </div>
                 <div class="fields">
                     <div class="FormFields">
-                        <img class="imagePreview" id="output" src="<?=(isset($row['Photo']) ? $row['Photo'] : ' ')?>" />
+                        <img class="imagePreview" id="output" src="<?=(isset($row['Photo']) ? "./imageUploads/".$row['Photo'] : ' ')?>" />
                         
 
 

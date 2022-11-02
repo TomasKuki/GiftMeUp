@@ -43,7 +43,7 @@ if (isset($_SESSION['userId'])) {
             <form action="">
                 <div class="fields">
                     <div class="FormFields">
-                        <img class="imagePreview" id="output" src="<?=(isset($row['Photo']) ? $row['Photo'] : ' ')?>" />
+                        <img class="imagePreview" id="output" src="<?=(isset($row['Photo']) ? "./imageUploads/".$row['Photo'] : ' ')?>" />
                         <label class="inputImage" for="image">Upload Image</label>
                         <input name="image" id="image" type="file" accept="image/*" onchange="loadFile(event)">
 
@@ -117,10 +117,10 @@ if (isset($_SESSION['userId'])) {
                 <div class="formSubmit">
                     <button type="submit" class="glassButton">Edit Gift</button>
                     <a href="./php/deleteGift.php?id='<?=$row['Id']?>'" class="glassButton">
-                        <button>Delete Gift</button>
+                        Delete Gift
                     </a>
                     <a href="./userGiftList.php" class="glassButton">
-                        <button> Cancel</button>
+                       Cancel
                     </a>
                 </div>
             </form>

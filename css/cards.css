@@ -29,8 +29,8 @@
   }
   
   .card__image {      
-    width: 100%;
-    height: auto;
+    width: 22rem;
+    height: 15rem;
   }
   
   .card__overlay {

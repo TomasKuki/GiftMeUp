@@ -37,9 +37,11 @@ if (isset($_SESSION['userId'])) {
       <div class="showCase">
         <div class="showCaseBtn">
           <a href="./addGift.php">
-            <button class="AddGiftBtn">ADD GIFT</button>
+            <button class="SecondBtn">ADD GIFT</button>
           </a>
+          <button class="SecondBtn" onclick="history.back()"> Back</button>
         </div>
+        
         <div class="showCaseCards">
         
           <?php

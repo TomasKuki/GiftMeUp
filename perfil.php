@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet" href="./css/cards.css" />
+    <link rel="stylesheet" href="./css/userGiftList.css" />
     <script src="https://kit.fontawesome.com/98f691c863.js" crossorigin="anonymous"></script>
     <title>Gift List</title>
   </head>
@@ -20,20 +21,31 @@
   ?>
     <div class="container">
       <div class="showCase">
-        <div class="cases">
-        <?php
-        include("./blocks/smallCards.html")
-        ?>
+      <div class="showCaseBtn">
+          <button class="SecondBtn" onclick="history.back()"> Back</button>
         </div>
-        <div class="cases">
-        <?php
-        include("./blocks/smallCards.html")
-        ?>
-        </div>
-        <div class="cases">
-        <?php
-        include("./blocks/smallCards.html")
-        ?>
+        <div class="showCaseCards">
+          <div class="cases">
+          <?php
+            $text = 'Still in Development';
+            $link = '#.php';
+            include("./blocks/smallCards.php")
+          ?>
+          </div>
+          <div class="cases">
+          <?php
+            $text = 'Still in Development';
+            $link = '#.php';
+            include("./blocks/smallCards.php")
+          ?>
+          </div>
+          <div class="cases">
+          <?php
+            $text = 'Still in Development';
+            $link = '#.php';
+            include("./blocks/smallCards.php")
+          ?>
+          </div>
         </div>
       </div>
     </div>

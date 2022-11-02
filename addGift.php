@@ -7,22 +7,76 @@ if (isset($_SESSION['userId'])) {
     include("./php/connectBD.php");
 
 //receive post variables php?
-if(isset($_POST['giftName']) && $_POST['image'] && $_POST['description'] && $_POST['stars'] && $_POST['price'] && $_POST['link']){
+if(isset($_POST['giftName']) && $_FILES['image'] && $_POST['description'] && $_POST['stars'] && $_POST['price'] && $_POST['link']){
 
 
     //Upload Image
+    $imageName = '';
+    $target_dir = "imageUploads/";
+    $target_file = $target_dir . basename($_FILES["image"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+    // Check if image file is a actual image or fake image
+    if(isset($_FILES["image"])) {
+    $check = getimagesize($_FILES["image"]["tmp_name"]);
+    if($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
+    }
+    // Gera um nome único para a imagem
+    $imageName = md5(uniqid(time())) . "." . $imageFileType;
+    // Caminho de onde ficará a imagem
+    $caminho_imagem = "./imageUploads/" . $imageName;
+    
+
+    // Check if file already exists
+    if (file_exists($imageName)) {
+        echo "Sorry, file already exists.";
+        $uploadOk = 0;
+    }
+
+    // Check file size
+    if ($_FILES["image"]["size"] > 500000) {
+        echo "Sorry, your file is too large.";
+        $uploadOk = 0;
+    }
+
+    // Allow certain file formats
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+    && $imageFileType != "gif" ) {
+        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        $uploadOk = 0;
+    }
+    
+    // Check if $uploadOk is set to 0 by an error
+    if ($uploadOk == 0) {
+        echo "Sorry, your Image was not uploaded.";
+        // if everything is ok, try to upload file
+        } else {
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $caminho_imagem)) {
+            echo "The file ". htmlspecialchars( basename( $_FILES["image"]["name"])). " has been uploaded.";
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
+    }
+      
 
     //add gift with user id
     //$sql = "INSERT INTO `gift` (`Id`, `UserId`, `Name`, `Link`, `Photo`, `Preference`, `Price`, `Description`, `CategoryId`, `Public`) VALUES (NULL, '2', '1', 'kuki.pt', 'a.pmg', '1', '1', '1', '1', '1');";
-    $sql = "INSERT INTO `gift` (`UserId`, `Name`, `Link`, `Photo`, `Preference`, `Price`, `Description`, `CategoryId`, `Public`) VALUES (".$_SESSION['userId'].", '".$_POST['giftName']."', '".$_POST['link']."', '".$_POST['image']."', '".$_POST['stars']."', '".$_POST['price']."','".$_POST['description']."', '1', '1');";
+    $sql = "INSERT INTO `gift` (`UserId`, `Name`, `Link`, `Photo`, `Preference`, `Price`, `Description`, `CategoryId`, `Public`) VALUES (".$_SESSION['userId'].", '".$_POST['giftName']."', '".$_POST['link']."', '".$imageName."', '".$_POST['stars']."', '".$_POST['price']."','".$_POST['description']."', '1', '1');";
 
     if (mysqli_query($conn, $sql)) {
         echo "Gift added successfully";
-        echo "<script type='text/javascript'>window.location.replace('./userGiftList.php');</script>";
+       // echo "<script type='text/javascript'>window.location.replace('./userGiftList.php');</script>";
       } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         echo "<script type='text/javascript'>alert('Ops ERRO');</script>";
-        echo "<script type='text/javascript'>window.location.replace('./addGift.php');</script>";
+        //echo "<script type='text/javascript'>window.location.replace('./addGift.php');</script>";
       }
 
     //move to home or list gift page
@@ -55,7 +109,7 @@ if(isset($_POST['giftName']) && $_POST['image'] && $_POST['description'] && $_PO
             <div class="title">
                 <h2>Create your Gift</h2>
             </div>
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
                 <div class="fields">
                     <div class="FormFields">
                         <img class="imagePreview" id="output" />
@@ -131,7 +185,8 @@ if(isset($_POST['giftName']) && $_POST['image'] && $_POST['description'] && $_PO
                 </div>
                 <div class="formSubmit">
                     <button type="submit" class="glassButton">Add Gift</button>
-                    <button class="glassButton"> Cancel</button>
+                    
+                    <a class="glassButton" href="./userGiftList.php">Cancel</a>
                 </div>
             </form>
         </div>
