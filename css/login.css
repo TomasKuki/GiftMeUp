@@ -107,3 +107,7 @@ body {
   font-size: 25px;
   color: white;
 }
+
+select > option{
+  border-radius: 5px;;
+}

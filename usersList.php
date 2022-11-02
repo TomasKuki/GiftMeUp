@@ -42,7 +42,7 @@ if (isset($_SESSION['userId'])) {
             while($row = $result->fetch_assoc()) {
               ?> <div class="cases"><?php
               $text = $row['Username'];
-              $link = "editGift.php?id='".$row['Id']."'";
+              $link = "otherUsersGiftList.php?id='".$row['Id']."'";
               include("./blocks/smallCards.php");
               ?></div><?php
             } 

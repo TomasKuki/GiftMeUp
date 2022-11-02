@@ -32,6 +32,7 @@ include("./php/connectBD.php")
             </div>
           </div>
           <button class="submitBtn" id="submitBtn">Login</button>
+          <button class="forgetBtn" id="submitBtn">Forgot the Password</button>
         </form>
       </div>
       <div id="registerForm" class="form hiddenForm">
@@ -49,12 +50,25 @@ include("./php/connectBD.php")
               <label class="labelsform" for="password">Password:</label>
               <input class="LoginInput" type="password" name="passwordRegister" id="" placeholder="Password">
             </div>
+            <div class="field">
+              <label class="labelsform" for="password">Age:</label>
+              <input class="LoginInput" type="number" name="ageRegister" id="" placeholder="Age">
+            </div>
+            <div class="field">
+              <label class="labelsform" for="password">Sex:</label>
+              <select name="sexRegister" id="">
+                <option value="none">Género......</option>
+                <option value="feminino">Feminino</option>
+                <option value="masculino">Masculino</option>
+                <option value="outro">Outro</option>
+              </select>
+            </div>
           </div>
           <button class="submitBtn" id="submitBtn">register</button>
         </form>
       </div>
       <div class="options">
-        <button class="forgetBtn" id="submitBtn">Forgot the Password</button>
+        
         <button class="flipBtn" id="flipFormBtn" onclick="flipForms()">Go to Register Page</button>
       </div>
     </div>

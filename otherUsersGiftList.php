@@ -6,8 +6,14 @@ include("./php/connectBD.php");
 
 // see if a session variable is being use in php?
 if (!isset($_SESSION['userId'])) {
+
   echo "<script type='text/javascript'>window.location.replace('./index.php');</script>";
-}
+
+}else {
+
+  $sql = "SELECT Id, Name, Photo, Description FROM `gift` WHERE UserId = ".$_GET['id']."";
+  $result = $conn->query($sql);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +26,7 @@ if (!isset($_SESSION['userId'])) {
     , initial-scale=1.0"
     />
     <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/userGiftList.css" />
     <link rel="stylesheet" href="./css/cards.css" />
     <script src="https://kit.fontawesome.com/98f691c863.js" crossorigin="anonymous"></script>
     <title>Gift List</title>
@@ -31,26 +37,27 @@ if (!isset($_SESSION['userId'])) {
   ?>
     <div class="container">
       <div class="showCase">
-        <div class="cases">
-        <?php
-        $text = 'A sua lista';
-        $link = 'userGiftList.php';
-        include("./blocks/smallCards.php")
-        ?>
-        </div>
-        <div class="cases">
-        <?php
-        $text = 'Veja as listas feitas por outras pessoas';
-        $link = 'usersList.php';
-        include("./blocks/smallCards.php")
-        ?>
-        </div>
-        <div class="cases">
-        <?php
-        $text = 'Perfil Pessoal';
-        $link = 'perfil.php';
-        include("./blocks/smallCards.php")
-        ?>
+        
+        <div class="showCaseCards">
+        
+          <?php
+            if ($result->num_rows >= 1) {
+              while($row = $result->fetch_assoc()) {
+                ?> 
+                  <div class="cases"><?php
+                    $text = $row['Name'];
+                    $link = "seeGift.php?id='".$row['Id']."'";
+                    $description = $row['Description'];
+                    include("./blocks/smallCards.php");
+                    ?>
+                  </div>
+                <?php
+              }
+            } else {
+              echo "<h1>Não Existem Presentes</h1>";
+            }
+          
+          ?>
         </div>
       </div>
     </div>
@@ -64,3 +71,7 @@ if (!isset($_SESSION['userId'])) {
   </footer>
   </body>
 </html>
+
+<?php
+}
+?>

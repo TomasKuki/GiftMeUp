@@ -6,31 +6,16 @@ if(!isset($_SESSION)) {
 if (isset($_SESSION['userId'])) {
     include("./php/connectBD.php");
 
-//receive post variables php?
-if(isset($_POST['giftName']) && $_POST['image'] && $_POST['description'] && $_POST['stars'] && $_POST['price'] && $_POST['link']){
+    //receive post variables php?
+    if(isset($_GET['id'])){
+        
+        $sql = "SELECT * FROM `gift` WHERE `Id` = ".$_GET['id']."";
 
-
-    //Upload Image
-
-    //add gift with user id
-    //$sql = "INSERT INTO `gift` (`Id`, `UserId`, `Name`, `Link`, `Photo`, `Preference`, `Price`, `Description`, `CategoryId`, `Public`) VALUES (NULL, '2', '1', 'kuki.pt', 'a.pmg', '1', '1', '1', '1', '1');";
-    $sql = "INSERT INTO `gift` (`UserId`, `Name`, `Link`, `Photo`, `Preference`, `Price`, `Description`, `CategoryId`, `Public`) VALUES (".$_SESSION['userId'].", '".$_POST['giftName']."', '".$_POST['link']."', '".$_POST['image']."', '".$_POST['stars']."', '".$_POST['price']."','".$_POST['description']."', '1', '1');";
-
-    if (mysqli_query($conn, $sql)) {
-        echo "Gift added successfully";
-        echo "<script type='text/javascript'>window.location.replace('./userGiftList.php');</script>";
-      } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-        echo "<script type='text/javascript'>alert('Ops ERRO');</script>";
-        echo "<script type='text/javascript'>window.location.replace('./addGift.php');</script>";
-      }
-
-    //move to home or list gift page
-   // echo "<script type='text/javascript'>window.location.replace('./listGift.php');</script>";
-}
-?>
+        if ($result = mysqli_query($conn, $sql)) {
+            while($row = $result->fetch_assoc()) {
+                ?> 
+                
     
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,19 +33,17 @@ if(isset($_POST['giftName']) && $_POST['image'] && $_POST['description'] && $_PO
 
 <body>
     <?php
-    include("./blocks/navBar.php")
+    include("./blocks/navBar.php");
     ?>
     <div class="container">
         <div class="giftForm">
             <div class="title">
-                <h2>Create your Gift</h2>
+                <h2>Edit your Gift</h2>
             </div>
-            <form action="" method="POST">
                 <div class="fields">
                     <div class="FormFields">
-                        <img class="imagePreview" id="output" />
-                        <label class="inputImage" for="image">Upload Image</label>
-                        <input name="image" id="image" type="file" accept="image/*" onchange="loadFile(event)">
+                        <img class="imagePreview" id="output" src="<?=(isset($row['Photo']) ? $row['Photo'] : ' ')?>" />
+                        
 
 
                     </div>
@@ -68,14 +51,14 @@ if(isset($_POST['giftName']) && $_POST['image'] && $_POST['description'] && $_PO
                         <div class="formRow">
                             <div class="field">
                                 <label for="giftName">Name</label>
-                                <input class="inputGlass" type="text" name="giftName" id="">
+                                <input class="inputGlass" type="text" name="giftName" id="" value="<?=(isset($row['Name']) ? $row['Name'] : ' ')?>"disabled>
                             </div>
 
                         </div>
                         <div class="formRow">
                             <div class="field">
                                 <label for="description">Description</label>
-                                <textarea class="inputGlass" name="description" id="" cols="30" rows="2"></textarea>
+                                <textarea class="inputGlass" name="description" id="" cols="30" rows="2" disabled> <?=(isset($row['Description']) ? $row['Description'] : ' ')?> </textarea>
                             </div>
                         </div>
                         <div class="formRow">
@@ -83,29 +66,29 @@ if(isset($_POST['giftName']) && $_POST['image'] && $_POST['description'] && $_PO
                                 <label for="stars">Preferencia</label>
                                 <div class="rating">
                                     <label>
-                                        <input type="radio" name="stars" value="1" />
+                                        <input type="radio" name="stars" value="1" <?php echo ($row['Preference'] == "1") ? 'checked="checked"' : ''; ?> disabled/>
                                         <span class="icon">★</span>
                                     </label>
                                     <label>
-                                        <input type="radio" name="stars" value="2" />
-                                        <span class="icon">★</span>
-                                        <span class="icon">★</span>
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="stars" value="3" />
-                                        <span class="icon">★</span>
+                                        <input type="radio" name="stars" value="2" <?php echo ($row['Preference'] == "2") ? 'checked="checked"' : ''; ?>disabled/>
                                         <span class="icon">★</span>
                                         <span class="icon">★</span>
                                     </label>
                                     <label>
-                                        <input type="radio" name="stars" value="4" />
-                                        <span class="icon">★</span>
+                                        <input type="radio" name="stars" value="3" <?php echo ($row['Preference'] == "3") ? 'checked="checked"' : ''; ?>disabled/>
                                         <span class="icon">★</span>
                                         <span class="icon">★</span>
                                         <span class="icon">★</span>
                                     </label>
                                     <label>
-                                        <input type="radio" name="stars" value="5" />
+                                        <input type="radio" name="stars" value="4" <?php echo ($row['Preference'] == "4") ? 'checked="checked"' : ''; ?>disabled/>
+                                        <span class="icon">★</span>
+                                        <span class="icon">★</span>
+                                        <span class="icon">★</span>
+                                        <span class="icon">★</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="stars" value="5" <?php echo ($row['Preference'] == "5") ? 'checked="checked"' : ''; ?>disabled/>
                                         <span class="icon">★</span>
                                         <span class="icon">★</span>
                                         <span class="icon">★</span>
@@ -116,13 +99,13 @@ if(isset($_POST['giftName']) && $_POST['image'] && $_POST['description'] && $_PO
                             </div>
                             <div class="smallField">
                                 <label for="price">Price</label>
-                                <input class="inputGlass" type="number" name="price" id="">
+                                <input class="inputGlass" type="number" name="price" id="" value="<?=(isset($row['Price']) ? $row['Price'] : ' ')?>"disabled>
                             </div>
                         </div>
                         <div class="formRow">
                             <div class="field">
                                 <label for="link">Store Link</label>
-                                <input class="inputGlass" type="text" name="link" id="">
+                                <input class="inputGlass" type="text" name="link" id="" value="<?=(isset($row['Link']) ? $row['Link'] : ' ')?>" disabled>
                             </div>
 
                         </div>
@@ -130,10 +113,8 @@ if(isset($_POST['giftName']) && $_POST['image'] && $_POST['description'] && $_PO
                     </div>
                 </div>
                 <div class="formSubmit">
-                    <button type="submit" class="glassButton">Add Gift</button>
-                    <button class="glassButton"> Cancel</button>
+                        <button class="glassButton" onclick="history.back()"> Back</button>
                 </div>
-            </form>
         </div>
     </div>
     <footer>
@@ -156,8 +137,14 @@ if(isset($_POST['giftName']) && $_POST['image'] && $_POST['description'] && $_PO
 </script>
 
 <?php
-}else {
-    echo "<script type='text/javascript'>window.location.replace('./login.php');</script>";
+         }
+        } else {
+            echo "Error: Ao obter o presente!";
+            echo "<script type='text/javascript'>window.location.replace('./addGift.php');</script>";
+        }
+
+        //move to home or list gift page
+    // echo "<script type='text/javascript'>window.location.replace('./listGift.php');</script>";
+    }
 }
 ?>
-

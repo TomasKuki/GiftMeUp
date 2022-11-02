@@ -1,3 +1,21 @@
+<?php
+if(!isset($_SESSION)) { 
+    session_start(); 
+  } 
+// see if a session variable is being use in php?
+if (isset($_SESSION['userId'])) {
+    include("./php/connectBD.php");
+
+    //receive post variables php?
+    if(isset($_GET['id'])){
+        
+        $sql = "SELECT * FROM `gift` WHERE `Id` = ".$_GET['id']."";
+
+        if ($result = mysqli_query($conn, $sql)) {
+            while($row = $result->fetch_assoc()) {
+                ?> 
+                
+    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +33,7 @@
 
 <body>
     <?php
-    include("./blocks/navBar.php")
+    include("./blocks/navBar.php");
     ?>
     <div class="container">
         <div class="giftForm">
@@ -25,7 +43,7 @@
             <form action="">
                 <div class="fields">
                     <div class="FormFields">
-                        <img class="imagePreview" id="output" />
+                        <img class="imagePreview" id="output" src="<?=(isset($row['Photo']) ? $row['Photo'] : ' ')?>" />
                         <label class="inputImage" for="image">Upload Image</label>
                         <input name="image" id="image" type="file" accept="image/*" onchange="loadFile(event)">
 
@@ -35,14 +53,14 @@
                         <div class="formRow">
                             <div class="field">
                                 <label for="giftName">Name</label>
-                                <input class="inputGlass" type="text" name="giftName" id="">
+                                <input class="inputGlass" type="text" name="giftName" id="" value="<?=(isset($row['Name']) ? $row['Name'] : ' ')?>">
                             </div>
 
                         </div>
                         <div class="formRow">
                             <div class="field">
                                 <label for="description">Description</label>
-                                <textarea class="inputGlass" name="description" id="" cols="30" rows="2"></textarea>
+                                <textarea class="inputGlass" name="description" id="" cols="30" rows="2" > <?=(isset($row['Description']) ? $row['Description'] : ' ')?> </textarea>
                             </div>
                         </div>
                         <div class="formRow">
@@ -50,29 +68,29 @@
                                 <label for="stars">Preferencia</label>
                                 <div class="rating">
                                     <label>
-                                        <input type="radio" name="stars" value="1" />
+                                        <input type="radio" name="stars" value="1" <?php echo ($row['Preference'] == "1") ? 'checked="checked"' : ''; ?> />
                                         <span class="icon">★</span>
                                     </label>
                                     <label>
-                                        <input type="radio" name="stars" value="2" />
-                                        <span class="icon">★</span>
-                                        <span class="icon">★</span>
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="stars" value="3" />
-                                        <span class="icon">★</span>
+                                        <input type="radio" name="stars" value="2" <?php echo ($row['Preference'] == "2") ? 'checked="checked"' : ''; ?>/>
                                         <span class="icon">★</span>
                                         <span class="icon">★</span>
                                     </label>
                                     <label>
-                                        <input type="radio" name="stars" value="4" />
-                                        <span class="icon">★</span>
+                                        <input type="radio" name="stars" value="3" <?php echo ($row['Preference'] == "3") ? 'checked="checked"' : ''; ?>/>
                                         <span class="icon">★</span>
                                         <span class="icon">★</span>
                                         <span class="icon">★</span>
                                     </label>
                                     <label>
-                                        <input type="radio" name="stars" value="5" />
+                                        <input type="radio" name="stars" value="4" <?php echo ($row['Preference'] == "4") ? 'checked="checked"' : ''; ?>/>
+                                        <span class="icon">★</span>
+                                        <span class="icon">★</span>
+                                        <span class="icon">★</span>
+                                        <span class="icon">★</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="stars" value="5" <?php echo ($row['Preference'] == "5") ? 'checked="checked"' : ''; ?>/>
                                         <span class="icon">★</span>
                                         <span class="icon">★</span>
                                         <span class="icon">★</span>
@@ -83,13 +101,13 @@
                             </div>
                             <div class="smallField">
                                 <label for="price">Price</label>
-                                <input class="inputGlass" type="number" name="price" id="">
+                                <input class="inputGlass" type="number" name="price" id="" value="<?=(isset($row['Price']) ? $row['Price'] : ' ')?>">
                             </div>
                         </div>
                         <div class="formRow">
                             <div class="field">
                                 <label for="link">Store Link</label>
-                                <input class="inputGlass" type="text" name="link" id="">
+                                <input class="inputGlass" type="text" name="link" id="" value="<?=(isset($row['Link']) ? $row['Link'] : ' ')?>">
                             </div>
 
                         </div>
@@ -98,7 +116,12 @@
                 </div>
                 <div class="formSubmit">
                     <button type="submit" class="glassButton">Edit Gift</button>
-                    <button class="glassButton"> Cancel</button>
+                    <a href="./php/deleteGift.php?id='<?=$row['Id']?>'" class="glassButton">
+                        <button>Delete Gift</button>
+                    </a>
+                    <a href="./userGiftList.php" class="glassButton">
+                        <button> Cancel</button>
+                    </a>
                 </div>
             </form>
         </div>
@@ -121,3 +144,16 @@
         console.log('New star rating: ' + this.value);
     });
 </script>
+
+<?php
+         }
+        } else {
+            echo "Error: Ao obter o presente!";
+            echo "<script type='text/javascript'>window.location.replace('./addGift.php');</script>";
+        }
+
+        //move to home or list gift page
+    // echo "<script type='text/javascript'>window.location.replace('./listGift.php');</script>";
+    }
+}
+?>

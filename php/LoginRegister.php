@@ -39,27 +39,35 @@ if(isset($_POST['email']) && $_POST['password']){
       
 
 
-}elseif(isset($_POST['emailRegister']) && $_POST['usernameRegister'] && $_POST['passwordRegister']){
+}elseif(isset($_POST['emailRegister']) && $_POST['usernameRegister'] && $_POST['passwordRegister'] && $_POST['ageRegister'] && $_POST['sexRegister']){
     //register
-    echo "<script type='text/javascript'>alert('you got register');</script>";
+    //echo "<script type='text/javascript'>alert('you got register');</script>";
     //verificar os parametros
     //criar utilizador
     
-    $sql = $mysqli->prepare("INSERT INTO users (?, ?, ?)");
-    $sql->bind_param('sss', $_POST['usernameRegister'], $_POST['emailRegister'], $_POST['passwordRegister']);
-    $sql->execute();
+   //verificar o login '
+   $sql = "INSERT INTO `users`(`Username`, `Password`, `Email`, `Age`, `Sex`) VALUES ('".$_POST['usernameRegister']."','".$_POST['passwordRegister']."','".$_POST['emailRegister']."','".$_POST['ageRegister']."','".$_POST['sexRegister']."')";
 
-    if ($sql->num_rows == 1) {
-    echo "User created successfully";
+
+   if (mysqli_query($conn, $sql)) {
+    //echo "User created successfully";
         //obter o username do utilizador
         //iniciar sessao
-        $_SESSION["userId"] = $_POST['Id'];
-    } else {
-    echo "Error: " . $sql . "<br>" . $conn->error; //MUDAR DEPOIS
+        $sql2 = "SELECT Id FROM users Where Email='".$_POST['emailRegister']."' and Password='".$_POST['passwordRegister']."'";
+        $result = $conn->query($sql2);
+        
+        while($row = $result->fetch_assoc()) {
+            //$_SESSION["username"] = x;
+            session_start();
+            $_SESSION["userId"] = $row["Id"];
+          }
+    echo "<script type='text/javascript'>window.location.replace('./../home.php');</script>";
+  } else {
+    echo "Error: <br>" . $conn->error;
+    echo "<script type='text/javascript'>alert('Ops ERRO');</script>";
     //PARAR E MUDAR DE PAGINA
-    }
-    
-    //mandar para o perfil do utilizador
+    echo "<script type='text/javascript'>window.location.replace('./login.php');</script>";
+  }
 
 }
 else {
