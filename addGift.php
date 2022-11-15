@@ -68,7 +68,8 @@ if(isset($_POST['giftName']) && $_FILES['image'] && $_POST['description'] && $_P
 
     //add gift with user id
     //$sql = "INSERT INTO `gift` (`Id`, `UserId`, `Name`, `Link`, `Photo`, `Preference`, `Price`, `Description`, `CategoryId`, `Public`) VALUES (NULL, '2', '1', 'kuki.pt', 'a.pmg', '1', '1', '1', '1', '1');";
-    $sql = "INSERT INTO `gift` (`UserId`, `Name`, `Link`, `Photo`, `Preference`, `Price`, `Description`, `CategoryId`, `Public`) VALUES (".$_SESSION['userId'].", '".$_POST['giftName']."', '".$_POST['link']."', '".$imageName."', '".$_POST['stars']."', '".$_POST['price']."','".$_POST['description']."', '1', '1');";
+    //$sql = "INSERT INTO `gift` (`UserId`, `Name`, `Link`, `Photo`, `Preference`, `Price`, `Description`, `CategoryId`, `Public`) VALUES (".$_SESSION['userId'].", '".$_POST['giftName']."', '".$_POST['link']."', '".$imageName."', '".$_POST['stars']."', '".$_POST['price']."','".$_POST['description']."', '1', '1');";
+    $sql = "INSERT INTO `gift` (`UserId`, `Name`, `Link`, `Photo`, `Preference`, `Price`, `Description`, `CategoryId`, `Public`) VALUES (".$_SESSION['userId'].", `".$_POST['giftName']."`, `".$_POST['link']."`, `".$imageName."`, `".$_POST['stars']."`, `".$_POST['price']."`,`".$_POST['description']."`, `1`, `1`);";
 
     if (mysqli_query($conn, $sql)) {
         echo "Gift added successfully";
