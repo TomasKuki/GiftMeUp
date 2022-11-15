@@ -77,7 +77,7 @@ if(isset($_POST['giftName']) && $_FILES['image'] && $_POST['description'] && $_P
       } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         echo "<script type='text/javascript'>alert('Ops ERRO');</script>";
-        //echo "<script type='text/javascript'>window.location.replace('./addGift.php');</script>";
+        echo "<script type='text/javascript'>window.location.replace('./addGift.php');</script>";
       }
 
     //move to home or list gift page
